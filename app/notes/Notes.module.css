@@ -1,0 +1,24 @@
+.link {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.note {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: lightyellow;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    height: auto;
+    width: 200px;
+    border: 1px solid black;
+    box-shadow: 4px 4px 5px 0px #00000075;
+    border-radius: 2px;
+}
+
+.note:hover {
+    box-shadow: 5px 5px 6px 2px #00000075;
+    border-top-right-radius: 10px;
+}
