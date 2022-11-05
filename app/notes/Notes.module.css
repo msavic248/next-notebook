@@ -1,7 +1,14 @@
+.titles {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .link {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    max-width: 430px;
 }
 
 .note {
@@ -9,11 +16,11 @@
     flex-direction: column;
     align-items: center;
     background-color: lightyellow;
-    padding: 0.5rem;
-    margin: 0.5rem;
+    padding: 0rem;
+    margin: 0.25rem;
     height: auto;
-    width: 200px;
-    border: 1px solid black;
+    width: 150px;
+    border: 2px solid black;
     box-shadow: 4px 4px 5px 0px #00000075;
     border-radius: 2px;
 }
@@ -21,4 +28,16 @@
 .note:hover {
     box-shadow: 5px 5px 6px 2px #00000075;
     border-top-right-radius: 10px;
+}
+
+.note > h2{
+    font-size: 20px;
+}
+
+.note > h5{
+    font-size: 12px;
+}
+
+.note > p{
+    font-size: 10px;
 }

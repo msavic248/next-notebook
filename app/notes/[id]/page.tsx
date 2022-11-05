@@ -1,5 +1,4 @@
 import PocketBase from 'pocketbase';
-import "../../globals.css";
 import styles from "../Notes.module.css";
 
 async function getNote(noteId: string) {
