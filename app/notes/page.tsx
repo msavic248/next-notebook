@@ -1,7 +1,7 @@
 import Link from "next/link";
 import PocketBase from 'pocketbase';
 import styles from "./Notes.module.css";
-import { useState } from "react";
+import CreateNote from "./CreateNote";
 
 export const dynamic = 'auto',
   dynamicParams = true,
@@ -13,7 +13,7 @@ export const dynamic = 'auto',
 async function getNotes() {
 
     const db = new PocketBase('http://127.0.0.1:8090');
-    const data = await db.records.getList("notes", 1, 6, {
+    const data = await db.records.getList("notes", 1, 8, {
         filter: 'created >= "2022-01-01 00:00:00"',
     });
     // const res = await fetch("http://127.0.0.1:8090/api/collections/notes/records?page=1&perPage=30",
@@ -35,8 +35,8 @@ export default async function NotesPage() {
                 {notes?.map(note => {
                     return <Note key={note.id} note={note} />;
                 })}
-                <button>Next page</button>
             </div>
+            <CreateNote />
         </div>
     )
 }

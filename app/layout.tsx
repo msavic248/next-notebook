@@ -1,8 +1,7 @@
 /* eslint-disable @next/next/no-head-element */
+
 import Link from "next/link";
 import "./globals.css";
-import localFont from "@next/font/google";
-
 
 
 export default function RootLayout({
@@ -10,13 +9,14 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+
   return (
     <html >
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
       </head>
       <body>
-        <main className="">
+        <main>
           <nav>
             <Link href="/">
               Home
