@@ -1,18 +1,15 @@
 'use client';
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 
-export default function CreateNote() {
+export default function UpdateNote(params: any) {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
     const [show, setShow] = useState(false);
 
-    const router = useRouter();
-
-    async function create() {
+    async function update() {
         const data = {
-            method: "POST",
+            method: "PATCH",
             headers: {
                 "Content-Type": "application/json"
             },
@@ -21,12 +18,10 @@ export default function CreateNote() {
                 content,
             }),
         };
-        await fetch ("http://127.0.0.1:8090/api/collections/notes/records", data);
+        await fetch(`http://127.0.0.1:8090/api/collections/notes/records/${params.id}`, data);
 
         setTitle("");
         setContent("");
-
-        router.refresh();
     }
 
     function handleButtonClick() {
@@ -39,13 +34,13 @@ export default function CreateNote() {
 
     return (
         <>
-            <button onClick={handleButtonClick}>Create a new Note</button>
-            {show && <form onSubmit={create}>
-                <h3>Create a new Note</h3>
+            <button onClick={handleButtonClick}>Update note</button>
+            {show && <form onSubmit={update}>
+                <h3>Update note</h3>
 
                 <input type="text" placeholder="Title" value={title} onChange={event => setTitle(event.target.value)} />
                 <textarea placeholder="Content" value={content} onChange={event => setContent(event.target.value)} />
-                <button type="submit">Create</button>
+                <button type="submit">Update</button>
             </form>}
         </>
     )

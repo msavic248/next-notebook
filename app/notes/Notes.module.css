@@ -1,17 +1,21 @@
-.titles {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+
+.notes {
+    text-align: center;;
 }
 
 .link {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding-bottom: 15px;
+    padding-bottom: 30px;
 }
 
 .note {
+    display: flex;
+    justify-content: center;
+}
+
+.notetext {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -25,19 +29,25 @@
     border-radius: 2px;
 }
 
-.note:hover {
+.notetext:hover {
     box-shadow: 5px 5px 6px 2px #00000075;
     border-top-right-radius: 10px;
 }
 
-.note > h2{
+.notetext > h2{
     font-size: 20px;
 }
 
-.note > h5{
+.notetext > h5{
     font-size: 12px;
 }
 
-.note > p{
+.notetext > p{
     font-size: 10px;
+}
+
+.notebuttons {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 30px;
 }

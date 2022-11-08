@@ -26,11 +26,8 @@ export default async function NotesPage() {
     const notes = await getNotes();
 
     return(
-        <div>
-            <div className={styles.titles}>
-                <h1>Notes</h1>
-                <button>New note</button>
-            </div>
+        <div className={styles.notes}>
+            <h1>Notes</h1>
             <div className={styles.link}>
                 {notes?.map(note => {
                     return <Note key={note.id} note={note} />;
@@ -46,10 +43,10 @@ function Note({note}: any) {
 
     return (
         <Link href={`/notes/${id}`}>
-            <div className={styles.note}>
+            <div className={styles.notetext}>
                 <h2>{title}</h2>
                 <h5>{content}</h5>
-                <p>{created}</p>
+                <p>{created.substring(0, created.length - 4)}</p>
             </div>
         </Link>
     )
