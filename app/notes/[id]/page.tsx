@@ -1,7 +1,7 @@
-import PocketBase from 'pocketbase';
 import styles from "../Notes.module.css";
 import UpdateNote from "./UpdateNote";
 import DeleteNote from "./DeleteNote";
+import {notFound} from "next/navigation";
 
 async function getNote(noteId: string) {
     
@@ -26,6 +26,10 @@ async function getNote(noteId: string) {
 
 export default async function NotePage({params}: any) {
     const note = await getNote(params.id);
+
+    if(!note) {
+        notFound();
+    }
 
     return(
     <>

@@ -58,3 +58,18 @@
   h1 {
     text-align: center;
   }
+
+  .titles {
+    text-align: center;
+  }
+  
+  footer {
+    justify-self: flex-end;
+  }
+
+  @media screen and (min-width: 768px) {
+    footer {
+      position: absolute;
+      bottom: 0;
+    }
+  }

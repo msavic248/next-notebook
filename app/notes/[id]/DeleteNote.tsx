@@ -26,8 +26,8 @@ export default function DeleteNote({id}: any) {
 
   return (
     <>
-      <button onClick={() => deleteNote()}>Delete note</button>
       {deleted && <p>Note has been deleted</p>}
+      <button onClick={() => deleteNote()}>Delete note</button>
     </>
   )
 }
