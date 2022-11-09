@@ -4,11 +4,24 @@ import UpdateNote from "./UpdateNote";
 import DeleteNote from "./DeleteNote";
 
 async function getNote(noteId: string) {
-    const db = new PocketBase('http://127.0.0.1:8090');
-    const record = await db.records.getOne('notes', `${noteId}`, {
-        expand: 'some_relation'
-    });
-    return record;
+    
+    try{
+        const res = await fetch(`http://127.0.0.1:8090/api/collections/notes/records/${noteId}`,
+            {
+                next: {revalidate: 10}
+            }
+        );
+        const record = await res.json();
+        return record;
+    } catch(error) {
+        console.error(error)
+    }
+    
+    // const db = new PocketBase('http://127.0.0.1:8090');
+    // const record = await db.records.getOne('notes', `${noteId}`, {
+    //     expand: 'some_relation'
+    // });
+    
 }
 
 export default async function NotePage({params}: any) {
@@ -26,10 +39,10 @@ export default async function NotePage({params}: any) {
         </div>
         <div className={styles.notebuttons}>
             <div>
-                <UpdateNote />
+                <UpdateNote id={note.id} />
             </div>
             <div>
-                <DeleteNote />
+                <DeleteNote id={note.id} />
             </div>
             
         </div>
