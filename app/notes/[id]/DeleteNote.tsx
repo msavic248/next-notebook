@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function DeleteNote({id}: any) {
+export default function DeleteNote({id, styles}: any) {
 
   const [deleted, setDeleted] = useState(false)
 
@@ -27,7 +27,7 @@ export default function DeleteNote({id}: any) {
   return (
     <>
       {deleted && <p>Note has been deleted</p>}
-      <button onClick={() => deleteNote()}>Delete note</button>
+      <button className={styles.button} onClick={() => deleteNote()}>Delete note</button>
     </>
   )
 }

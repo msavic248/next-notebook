@@ -2,8 +2,16 @@
     box-sizing: border-box;
   }
 
+  html {
+    min-height: 100vh;
+  }
+
   body { 
     background-color: ghostwhite;
+  }
+
+  body.dark {
+    background-color: #333;
   }
 
   html,
@@ -12,7 +20,6 @@
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
       Helvetica Neue, sans-serif;
-      padding: 0 2rem;
   }
   
   a {
@@ -21,10 +28,51 @@
     padding: 0;
     margin: 0;
   }
+
+  nav {
+    background-color: lightyellow;
+    padding: 1em;
+    border-bottom: 1px solid lightgrey;
+    display: grid;
+    grid-template-columns: 1fr repeat(2, auto) 1fr;
+    height: 7.5vh;
+  }
+
+  nav a:nth-child(1) {
+    grid-column-start: 2;
+  }
+
+  nav a:nth-child(3) {
+    margin-left: auto; 
+  }
+
+  nav a {
+    font-weight: bold;
+    font-size: 1em;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    transform: scale(1);
+    transition: 300ms ease-out;
+  }
+
+  nav a:hover {
+    transform: scale(1.1);
+    transition: 300ms ease-out;
+  }
+
+  nav button > * {
+    transform: scale(1);
+    transition: 300ms ease-out;
+  }
+
+  nav button > *:hover {
+    transform: scale(1.2);
+    transition: 300ms ease-out;
+  }
   
   main {
-    min-height: 100vh;
-    padding: 2.5em 0;
+    padding: 0 0;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -36,27 +84,22 @@
     max-width: 300px;
     margin: 0.5rem 0;
   }
-  
+
   button {
-    background-color: #000000;
+    background-color: inherit;
     border: none;
-    border-radius: 15px;
-    color: white;
-    padding: 0.5rem 2.2rem;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     cursor: pointer;
   }
 
-  nav a {
-    font-weight: bold;
-    margin: 0 0.5rem;
-    text-decoration: underline;
-  }
-
   h1 {
     text-align: center;
+  }
+
+  h1.dark {
+    color: ghostwhite
   }
 
   .titles {
@@ -64,12 +107,12 @@
   }
   
   footer {
-    justify-self: flex-end;
+    position: absolute;
+    bottom: 0;
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (max-width: 768px) {
     footer {
-      position: absolute;
-      bottom: 0;
+      justify-self: flex-end;
     }
   }

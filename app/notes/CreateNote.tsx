@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-export default function CreateNote() {
+export default function CreateNote({styles}: any) {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
     const [show, setShow] = useState(false);
@@ -39,13 +39,13 @@ export default function CreateNote() {
 
     return (
         <>
-            <button onClick={handleButtonClick}>Create a new Note</button>
+            <button className={styles.button} onClick={handleButtonClick}>Create a new Note</button>
             {show && <form onSubmit={create}>
                 <h3>Create a new Note</h3>
 
                 <input type="text" placeholder="Title" value={title} onChange={event => setTitle(event.target.value)} />
                 <textarea placeholder="Content" value={content} onChange={event => setContent(event.target.value)} />
-                <button type="submit">Create</button>
+                <button className={styles.button} type="submit">Create</button>
             </form>}
         </>
     )

@@ -10,6 +10,7 @@
     flex-wrap: wrap;
     justify-content: center;
     padding-bottom: 30px;
+    gap: 6px;
 }
 
 .note {
@@ -29,11 +30,15 @@
     border: 2px solid black;
     box-shadow: 4px 4px 5px 0px #00000075;
     border-radius: 2px;
+    transform: scale(1);
+    transition: 300ms ease-out;
 }
 
 .notetext:hover {
     box-shadow: 5px 5px 6px 2px #00000075;
     border-top-right-radius: 10px;
+    transform: scale(1.1);
+    transition: 300ms ease-out;
 }
 
 .notetext > h2{
@@ -53,3 +58,15 @@
     justify-content: space-around;
     padding-top: 30px;
 }
+
+.button {
+    background-color: #000000;
+    border: none;
+    border-radius: 15px;
+    color: white;
+    padding: 0.5rem 2.2rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+  }

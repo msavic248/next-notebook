@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-export default function UpdateNote({id}: any) {
+export default function UpdateNote({id, styles}: any) {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
     const [show, setShow] = useState(false);
@@ -43,13 +43,13 @@ export default function UpdateNote({id}: any) {
 
     return (
         <>
-            <button onClick={handleButtonClick}>Update note</button>
+            <button className={styles.button} onClick={handleButtonClick}>Update note</button>
             {show && <form onSubmit={update}>
                 <h3>Update note</h3>
 
                 <input type="text" placeholder="Title" value={title} onChange={event => setTitle(event.target.value)} />
                 <textarea placeholder="Content" value={content} onChange={event => setContent(event.target.value)} />
-                <button type="submit">Update</button>
+                <button className={styles.button} type="submit">Update</button>
             </form>}
         </>
     )
