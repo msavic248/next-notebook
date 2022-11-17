@@ -5,7 +5,12 @@ import {useState} from "react";
 
 export default function DarkModeButton() {
     const [dark, setDark] = useState(false);
-    const body = document.querySelector("body");
+    let body;
+
+    if (typeof document !== 'undefined') {
+        // will run in client's browser only
+        body = document.querySelector("body");
+    }
     
 
     function handleButtonClick() {

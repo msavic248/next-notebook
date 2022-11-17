@@ -1,10 +1,18 @@
 'use client';
 
 import { useState } from "react";
+import { useRouter, usePathname  } from "next/navigation";
+import styles from "../Notes.module.css";
 
-export default function DeleteNote({id, styles}: any) {
+export default function DeleteNote() {
 
   const [deleted, setDeleted] = useState(false)
+
+  const router = useRouter();
+
+  //get path and remove "/notes/"
+  const pathname = usePathname();
+  const id = pathname.substring(7);
 
   async function deleteNote() {
     try {
@@ -23,11 +31,16 @@ export default function DeleteNote({id, styles}: any) {
     
   }
 
+  function handleButtonClick() {
+    deleteNote();
+    router.refresh();
+    router.push("/notes")
+  }
 
   return (
     <>
       {deleted && <p>Note has been deleted</p>}
-      <button className={styles.button} onClick={() => deleteNote()}>Delete note</button>
+      <button className={styles.button} onClick={handleButtonClick}>Delete note</button>
     </>
   )
 }

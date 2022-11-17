@@ -1,14 +1,19 @@
 'use client';
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname  } from "next/navigation";
+import styles from "../Notes.module.css";
 
-export default function UpdateNote({id, styles}: any) {
+export default function UpdateNote() {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
     const [show, setShow] = useState(false);
 
     const router = useRouter();
+
+    //get path and remove "/notes/"
+    const pathname = usePathname();
+    const id = pathname.substring(7);
 
     async function update() {
         try{
@@ -46,7 +51,7 @@ export default function UpdateNote({id, styles}: any) {
             <button className={styles.button} onClick={handleButtonClick}>Update note</button>
             {show && <form onSubmit={update}>
                 <h3>Update note</h3>
-
+                
                 <input type="text" placeholder="Title" value={title} onChange={event => setTitle(event.target.value)} />
                 <textarea placeholder="Content" value={content} onChange={event => setContent(event.target.value)} />
                 <button className={styles.button} type="submit">Update</button>
