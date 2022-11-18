@@ -1,32 +1,21 @@
 import styles from "../Notes.module.css";
 import UpdateNote from "./UpdateNote";
 import DeleteNote from "./DeleteNote";
-import { notFound } from "next/navigation";
-
-// export const dynamicParams = true;
 
 async function getNote(noteId: string) {
     
-    try{
-        const res = await fetch(`http://127.0.0.1:8090/api/collections/notes/records/${noteId}`,
-            {
-                // next: {revalidate: 10},
-                cache: "no-cache",
-            }
-        );
-        const record = await res.json();
-        return record;
-    } catch(error) {
-        console.error(error)
-    }
+    const res = await fetch(`http://127.0.0.1:8090/api/collections/notes/records/${noteId}`,
+        {
+            next: {revalidate: 10},
+            // cache: "no-cache",
+        }
+    );
+    const data = await res.json();
+    return data;
 }
 
 export default async function NotePage({params}: any) {
     const note = await getNote(params.id);
-
-    if(!note.id) {
-       return notFound();
-    }
 
     return(
     <>
@@ -35,16 +24,16 @@ export default async function NotePage({params}: any) {
             <div className={styles.notetext}>
                 <h2>{note.title}</h2>
                 <h5>{note.content}</h5>
-                <p>{note.created.substring(0, note.created.length - 4)}</p>
+                <p>{note.created && note.created.substring(0, note.created.length - 4)}</p>
             </div>
         </div>
 
         <div className={styles.notebuttons}>
             <div>
-                <UpdateNote />
+                {/* <UpdateNote /> */}
             </div>
             <div>
-                <DeleteNote />
+                {/* <DeleteNote /> */}
             </div>
             
         </div>

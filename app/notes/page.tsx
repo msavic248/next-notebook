@@ -15,17 +15,13 @@ async function getNotes() {
     // const data = await db.records.getList("notes", 1, 8, {
     //     filter: 'created >= "2022-01-01 00:00:00"',
     // });
-    try{
         const res = await fetch("http://127.0.0.1:8090/api/collections/notes/records?page=1&perPage=30",
         {
-            // cache: "no-store",
-            next: {revalidate: 5},
+            cache: "no-store",
+            // next: {revalidate: 5},
         });
         const data = await res.json();
         return data?.items as any[];
-    } catch(error) {
-        console.error(error)
-    }
     
 }
 
@@ -37,12 +33,14 @@ export default async function NotesPage() {
         <div className={styles.notes}>
             <h1>Notes</h1>
             <div className={styles.link}>
-                {notes?.map(note => {
-                    return <Note key={note.id} note={note} styles={styles} />;
+                {notes?.map((note) => {
+                    return (
+                        <Note key={note.id} note={note}/>
+                    );
                 })}
             </div>
+
             <CreateNote />
         </div>
     )
 }
-
